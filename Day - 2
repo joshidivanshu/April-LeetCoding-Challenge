@@ -1,0 +1,26 @@
+class Solution {
+    // we calculate the square sum of every number.
+    public static int numSquareSum(int n)
+    {
+        int sqsum = 0;
+        while( n != 0)
+        {
+            sqsum += (n%10)*(n%10);
+            n /= 10;
+        }
+        return sqsum;
+    }
+    // since we can understand if we get the same number again then the same will loop again and again infinite times so the number won't be a happy number
+    public boolean isHappy(int n) {
+        HashSet<Integer> h = new HashSet<Integer>();
+        while(true)
+        {
+            n = numSquareSum(n);
+            if( n == 1)
+                return true;
+            if(h.contains(n))
+                return false;
+            h.add(n);
+        }
+    }
+}
