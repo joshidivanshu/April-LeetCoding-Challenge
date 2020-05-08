@@ -1,0 +1,10 @@
+class Solution {
+    // xor of a number which repeats even no. of times becomes 0 and the no. which is present only one time remains at the end of xoring operation
+    public int singleNumber(int[] nums) {
+        int res = 0;
+        for(int i=0;i<nums.length;i++)
+            res = res ^ nums[i];
+        return res;
+            
+    }
+}
