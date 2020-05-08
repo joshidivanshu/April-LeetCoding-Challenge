@@ -1,0 +1,24 @@
+class Solution {
+    // since all the anagrams when sorted will have the same string representation so that can be used to store the anagrams in the hashmap
+    public static String genKey(String s)
+    {
+        char[] k = s.toCharArray();
+        Arrays.sort(k);
+        return new String(k);
+    }
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> result = new ArrayList<>();
+        if(strs.length == 0)
+            return result;
+        HashMap<String,List<String>> hm = new HashMap<>();
+        for(int i=0;i<strs.length;i++)
+        {
+            String key = genKey(strs[i]);
+            if(!hm.containsKey(key))
+                hm.put(key,new ArrayList<String>());
+            hm.get(key).add(strs[i]);
+        }
+        result.addAll(hm.values());
+        return result;
+    }
+}
